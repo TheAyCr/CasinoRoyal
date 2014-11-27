@@ -45,6 +45,7 @@ public class Methoden {
 		}
 	}
 
+	// definiert das Startguthaben
 	public static void startguthaben() {
 
 		intsc("Euro");

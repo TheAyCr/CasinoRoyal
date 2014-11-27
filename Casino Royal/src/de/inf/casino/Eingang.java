@@ -15,7 +15,7 @@ public class Eingang extends Spiele {
 
 		startguthaben();
 		
-		
+		System.out.println("HI das ist ein Test");
 	}
 
 }
