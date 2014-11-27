@@ -1,14 +1,46 @@
 package de.inf.casino;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Methoden {
 
 	private static Scanner scannerint;
-	private static int _scint;
+	public static int _scint;
 
 	private static Scanner scannerstring;
-	private static String _scstring;
+	public static String _scstring;
+
+	// erstellt ein Benutzerprofil
+	public static void profil() {
+
+		stringsc("Dein Name");
+		String name = _scstring;
+
+		Spielerprofil player = new Spielerprofil();
+
+		stringsc("Dein Alter");
+		String alter = _scstring;
+
+		startguthaben();
+
+	}
+
+	// FileWriter
+	public static void filewriter(String path, String input) throws IOException {
+
+		FileOutputStream spielerListe = new FileOutputStream(path);
+
+		for (int i = 0; i < input.length(); i++) {
+			spielerListe.write((byte) input.charAt(i));
+		}
+
+		spielerListe.close();
+		
+		System.out.println("Datei ist geschrieben!");
+
+	}
 
 	// Integer scanner und überprüfung auf Integer
 	public static void intsc(String waswillstdu) {

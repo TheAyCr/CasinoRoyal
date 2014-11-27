@@ -13,10 +13,10 @@ public class Eingang extends Spiele {
 		System.out.println("  ║║ 	                            			       ║║");
 		System.out.println("  ║║ 	                            			       ║║");
 
-		startguthaben();
+		profil();
 		
-		System.out.println("HI das ist ein Test");
-		System.out.println(_chips);
+		spielelobby();
+		
 	}
 
 }
