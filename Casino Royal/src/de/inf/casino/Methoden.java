@@ -1,5 +1,6 @@
 package de.inf.casino;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,6 +12,8 @@ public class Methoden {
 
 	private static Scanner scannerstring;
 	public static String _scstring;
+	
+	public static File file;
 
 	// erstellt ein Benutzerprofil
 	public static void profil() {
@@ -18,13 +21,35 @@ public class Methoden {
 		stringsc("Dein Name");
 		String name = _scstring;
 
-		Spielerprofil player = new Spielerprofil();
+		Spielerprofil player = new Spielerprofil(name);
 
 		stringsc("Dein Alter");
 		String alter = _scstring;
 
 		startguthaben();
 
+	}
+
+	// erstelle File
+	public void erstelleFile(String FileName) {
+		
+		file = new File(FileName);
+		if (!file.exists()) {
+			try {
+				file.createNewFile();
+				
+			} catch (IOException e) {
+
+				System.out
+						.println("Achtung! Datei konnte nicht erstellt werden!");
+				System.out.println("!!! Terminate java !!!");
+				delay(5000);
+
+				System.exit(0);
+
+			}
+
+		}
 	}
 
 	// FileWriter
@@ -37,7 +62,7 @@ public class Methoden {
 		}
 
 		spielerListe.close();
-		
+
 		System.out.println("Datei ist geschrieben!");
 
 	}
