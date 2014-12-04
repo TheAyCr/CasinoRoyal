@@ -2,19 +2,6 @@ package de.inf.casino;
 
 public class Spiele extends Methoden {
 
-	public static int _chips;
-	public static int _startchips;
-
-	public static void set_chips(int _chips) {
-
-		if (_startchips <= 0) {
-
-			startguthaben();
-		}
-
-		Spiele._chips = _chips;
-
-	}
 
 	public static void spielelobby() {
 
@@ -70,7 +57,7 @@ public class Spiele extends Methoden {
 		else if (modus.equalsIgnoreCase("chips")
 				|| modus.equalsIgnoreCase("coins")) {
 
-			System.out.println("Du hast noch " + _chips + " Chips");
+			System.out.println("Du hast noch " + _guthaben + " Chips");
 			
 			delay(4000);
 			

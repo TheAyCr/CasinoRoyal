@@ -1,7 +1,6 @@
 package de.inf.casino;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -12,32 +11,29 @@ public class Methoden {
 
 	private static Scanner scannerstring;
 	public static String _scstring;
-	
+
 	public static File file;
+
+	public static String _name;
+	public static int _alter;
+	public static int _guthaben;
+	public static int _startguthaben;
 
 	// erstellt ein Benutzerprofil
 	public static void profil() {
 
-		stringsc("Dein Name");
-		String name = _scstring;
-
-		Spielerprofil player = new Spielerprofil(name);
-
-		stringsc("Dein Alter");
-		String alter = _scstring;
-
-		startguthaben();
+		new Spielerprofil();
 
 	}
 
 	// erstelle File
 	public void erstelleFile(String FileName) {
-		
+
 		file = new File(FileName);
 		if (!file.exists()) {
 			try {
 				file.createNewFile();
-				
+
 			} catch (IOException e) {
 
 				System.out
@@ -50,21 +46,6 @@ public class Methoden {
 			}
 
 		}
-	}
-
-	// FileWriter
-	public static void filewriter(String path, String input) throws IOException {
-
-		FileOutputStream spielerListe = new FileOutputStream(path);
-
-		for (int i = 0; i < input.length(); i++) {
-			spielerListe.write((byte) input.charAt(i));
-		}
-
-		spielerListe.close();
-
-		System.out.println("Datei ist geschrieben!");
-
 	}
 
 	// Integer scanner und überprüfung auf Integer
@@ -102,13 +83,38 @@ public class Methoden {
 		}
 	}
 
-	// definiert das Startguthaben
-	public static void startguthaben() {
+	// getter und Setter
+	public static String get_name() {
+		return _name;
+	}
 
-		intsc("Euro");
+	public static String set_name() {
+
+		stringsc("Dein Name");
+		_name = _scstring;
+		return _name;
+	}
+
+	public static int get_alter() {
+		return _alter;
+	}
+
+	public static int set_alter() {
+
+		intsc("Dein Alter");
+		_alter = _scint;
+		return _alter;
+	}
+
+	public static int get_guthaben() {
+		return _guthaben;
+	}
+
+	public static int set_guthaben() {
+		intsc("Dein Startguthaben");
 		int sg = _scint;
-		Spiele._chips = sg;
-		Spiele._startchips = sg;
-
+		_guthaben = sg;
+		_startguthaben = sg;
+		return _guthaben;
 	}
 }

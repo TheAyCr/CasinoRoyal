@@ -1,19 +1,19 @@
 package de.inf.casino;
 
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-@SuppressWarnings("unused")
 public class Spielerprofil extends Methoden {
 
-	private static String _name;
 	private static Scanner filesc;
+	private static FileWriter fw;
+	private static boolean ergebniss;
 
-	public Spielerprofil(String Name) {
+	public Spielerprofil() {
 
-		set_name(Name);
+		set_name();
 
 		erstelleFile("PlayerFile.txt");
 
@@ -26,18 +26,23 @@ public class Spielerprofil extends Methoden {
 		if (file.exists()) {
 			try {
 				filesc = new Scanner(file);
-				while (filesc.hasNextLine()) {
-					// scan for names on the content of the file
-					String str = filesc.findInLine(_name);
-					if (str != null) {
+				while (filesc.hasNext()) {
 
-						// System.out.println(str);
+					if (filesc.nextLine() == _name) {
+
+						ergebniss = true;
+						System.out.println(ergebniss + get_name());
+
+						existSpieler();
+
+					} else {
+						ergebniss = false;
+						filesc.close();
+						System.out.println("newSpieler " + get_name());
+						newSpieler();
+						// System.exit(0);
 					}
-					// next line
-					filesc.nextLine();
 				}
-				// schlieﬂe scanner objekt
-				filesc.close();
 
 			} catch (FileNotFoundException e) {
 			}
@@ -46,20 +51,25 @@ public class Spielerprofil extends Methoden {
 
 	public static void newSpieler() {
 
+		try {
+			fw = new FileWriter(file);
+			fw.write(get_name());
+			fw.write("\n");
+			fw.write(set_alter());
+			fw.write("\n");
+			fw.write(set_guthaben());
+
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public static void existSpieler() {
 
-	}
+		System.out.println("Spieler in DB gefunden!");
 
-	
-	//getter und Setter
-	public static String get_name() {
-		return _name;
-	}
-
-	public static void set_name(String _name) {
-		Spielerprofil._name = _name;
 	}
 
 }
