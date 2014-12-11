@@ -47,16 +47,16 @@ public class Methoden {
 		if (_alter >= 18) {
 
 		}
-		
+
 		else {
-			
+
 			System.out.println("");
 			System.out.println("");
 			System.out
 					.println("Achtung! Du musst Mindestens 18 Jahre alt sein um im Casino spielen zu dürfen.");
 			System.out.println("");
 			System.out.println("");
-			
+
 			delay(6000);
 			new Eingang();
 		}
@@ -96,6 +96,26 @@ public class Methoden {
 		} catch (Exception e) {
 		}
 	}
+
+	// System out prints
+	public static void clear() {
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+	}
+	
+	public static void printGuthaben() {
+		System.out.println("Du hast noch ein Guthaben von " + _guthaben + " Chips");
+	}
+	
 
 	// Benutzereingaben
 	public static void scset_name() {

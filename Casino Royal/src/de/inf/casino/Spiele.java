@@ -2,6 +2,8 @@ package de.inf.casino;
 
 public class Spiele extends Methoden {
 
+	private static String _modus;
+	private static int _einsatz;
 
 	public static void spielelobby() {
 
@@ -20,58 +22,98 @@ public class Spiele extends Methoden {
 		System.out.println("");
 
 		stringsc("Bitte wähle jetzt");
-		String modus = _scstring;
+		_modus = _scstring;
 
-		if (modus.equalsIgnoreCase("Roulette") || modus.equalsIgnoreCase("1")) {
+		if (_modus.equalsIgnoreCase("Roulette") || _modus.equalsIgnoreCase("1")) {
 
 			// TODO Roulette roulette = new Roulette();
 
-		} else if (modus.equalsIgnoreCase("Lotterie")
-				|| modus.equalsIgnoreCase("2")) {
+		} else if (_modus.equalsIgnoreCase("Lotterie")
+				|| _modus.equalsIgnoreCase("2")) {
 
-			// TODO Lotterie lotterie = new Lotterie();
+			Lotterie lotterie = new Lotterie();
 		}
 
-		else if (modus.equalsIgnoreCase("BlackJack")
-				|| modus.equalsIgnoreCase("3")) {
-			
-			//TODO BlackJack blackjack = new BlackJack();
+		else if (_modus.equalsIgnoreCase("BlackJack")
+				|| _modus.equalsIgnoreCase("3")) {
+
+			// TODO BlackJack blackjack = new BlackJack();
 		}
 
-		
-		else if (modus.equalsIgnoreCase("EinarmigerBandit")
-				|| modus.equalsIgnoreCase("4")) {
-			
-			//TODO EinarmigerBandit einarmigerbandit = new EinarmigerBandit();
-		}
-		
+		else if (_modus.equalsIgnoreCase("EinarmigerBandit")
+				|| _modus.equalsIgnoreCase("4")) {
 
-		else if (modus.equalsIgnoreCase("exit")
-				|| modus.equalsIgnoreCase("stop")
-				|| modus.equalsIgnoreCase("ende")) {
-			
-			//TODO Ausgang ausgang = new Ausgang();
+			// TODO EinarmigerBandit einarmigerbandit = new EinarmigerBandit();
 		}
 
-		
-		else if (modus.equalsIgnoreCase("chips")
-				|| modus.equalsIgnoreCase("coins")) {
+		else if (_modus.equalsIgnoreCase("exit")
+				|| _modus.equalsIgnoreCase("stop")
+				|| _modus.equalsIgnoreCase("ende")) {
 
-			System.out.println("Du hast noch " + _guthaben + " Chips");
-			
+			// TODO Ausgang ausgang = new Ausgang();
+		}
+
+		else if (_modus.equalsIgnoreCase("chips")
+				|| _modus.equalsIgnoreCase("coins")) {
+
+			printGuthaben();
+
 			delay(3000);
-			
+
 			spielelobby();
 		}
 
 		else {
 			System.out
 					.println("Zur Verfügung steht nur Roulette(1), Lotterie(2), BlackJack(3) und EinarmigerBandit(4)");
-			
+
 			delay(4000);
-			
+
 			spielelobby();
 		}
+	}
+
+	// Start eines Spiels
+	public static void gameStart(String classname) {
+		clear();
+		System.out.println("Du startest jetzt den Spielmodus " + classname);
+		System.out.print("");
+		printGuthaben();
+		System.out.println("");
+		System.out.println("");
+	}
+
+	// Einsatz eines Spiels
+	public static void einsatz() {
+
+		System.out.println("Wie hoch ist dein Einsatz für dieses Spiel?");
+		System.out.println("");
+
+		intsc("Einsatz");
+		_einsatz = _scint;
+
+		boolean Schulden;
+		while (Schulden = false) {
+			if (get_guthaben() - _einsatz >= 0) {
+				Schulden = true;
+				set_guthaben(get_guthaben() - _einsatz);
+				break;
+			} else {
+				System.out.println("Du darfst hier keine Schulden machen!");
+				delay(4000);
+				einsatz();
+			}
+		}
+
+	}
+
+	// getter und setter
+	public static String get_modus() {
+		return _modus;
+	}
+
+	public static void set_modus(String _modus) {
+		Spiele._modus = _modus;
 	}
 
 }
