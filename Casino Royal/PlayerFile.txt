@@ -1,1 +1,3 @@
-Lenni
+Name: Lenni Alter: 20 Guthaben: 9872
+Name: Maja Alter: 12 Guthaben: 1235
+Name: Marcel Alter: 17 Guthaben: 9586476

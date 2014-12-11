@@ -4,6 +4,12 @@ public class Eingang extends Spiele {
 
 	public static void main(String[] args) {
 
+		new Eingang();
+		
+	}
+
+	Eingang() {
+
 		System.out.print("\n");
 		System.out.println("  ║║ 	                            			       ║║");
 		System.out.println("  ║║ 	    	Willkommen im Casino Royal		       ║║");
@@ -13,10 +19,13 @@ public class Eingang extends Spiele {
 		System.out.println("  ║║ 	                            			       ║║");
 		System.out.println("  ║║ 	                            			       ║║");
 
-		profil();
-		
+		// erstellt ein Benutzerprofil
+		new Spielerprofil();
+
+		checkalter();
+
 		spielelobby();
-		
+
 	}
 
 }

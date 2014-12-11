@@ -59,16 +59,16 @@ public class Spiele extends Methoden {
 
 			System.out.println("Du hast noch " + _guthaben + " Chips");
 			
-			delay(4000);
+			delay(3000);
 			
 			spielelobby();
 		}
 
 		else {
 			System.out
-					.println("Zur Verfügung steht nur Roulette(1), Lotterie(2), BlackJack(3) und EinarmigerBandit(3)");
+					.println("Zur Verfügung steht nur Roulette(1), Lotterie(2), BlackJack(3) und EinarmigerBandit(4)");
 			
-			delay(5000);
+			delay(4000);
 			
 			spielelobby();
 		}
