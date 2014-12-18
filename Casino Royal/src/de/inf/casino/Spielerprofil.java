@@ -44,7 +44,7 @@ public class Spielerprofil extends Methoden {
 				}
 
 			} catch (FileNotFoundException e) {
-				System.out.println("FUCK fehler in Spielerpofiel");
+				System.out.println("FUCK fehler im Spielerpofiel");
 
 			}
 

@@ -19,6 +19,12 @@ public class Eingang extends Spiele {
 		System.out.println("  ║║ 	                            			       ║║");
 		System.out.println("  ║║ 	                            			       ║║");
 
+		
+		//tests
+		
+		//set_guthaben(9);
+		
+		
 		// erstellt ein Benutzerprofil
 		new Spielerprofil();
 

@@ -31,7 +31,7 @@ public class Spiele extends Methoden {
 		} else if (_modus.equalsIgnoreCase("Lotterie")
 				|| _modus.equalsIgnoreCase("2")) {
 
-			Lotterie lotterie = new Lotterie();
+			new Lotterie();
 		}
 
 		else if (_modus.equalsIgnoreCase("BlackJack")
@@ -51,6 +51,11 @@ public class Spiele extends Methoden {
 				|| _modus.equalsIgnoreCase("ende")) {
 
 			// TODO Ausgang ausgang = new Ausgang();
+		}
+		
+		else if (_modus.equalsIgnoreCase("test")) {
+
+			replace_guthaben(8);
 		}
 
 		else if (_modus.equalsIgnoreCase("chips")
@@ -92,6 +97,7 @@ public class Spiele extends Methoden {
 		intsc("Einsatz");
 		_einsatz = _scint;
 
+		@SuppressWarnings("unused")
 		boolean Schulden;
 		while (Schulden = false) {
 			if (get_guthaben() - _einsatz >= 0) {

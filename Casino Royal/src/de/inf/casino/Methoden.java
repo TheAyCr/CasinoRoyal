@@ -1,6 +1,9 @@
 package de.inf.casino;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -111,11 +114,11 @@ public class Methoden {
 		System.out.println("");
 		System.out.println("");
 	}
-	
+
 	public static void printGuthaben() {
-		System.out.println("Du hast noch ein Guthaben von " + _guthaben + " Chips");
+		System.out.println("Du hast noch ein Guthaben von " + _guthaben
+				+ " Chips");
 	}
-	
 
 	// Benutzereingaben
 	public static void scset_name() {
@@ -161,5 +164,45 @@ public class Methoden {
 
 	public static void set_guthaben(int newguthaben) {
 		_guthaben = newguthaben;
+	}
+
+	public static void replace_guthaben(int newguthaben) {
+
+		String guthaben = String.valueOf(get_guthaben());
+		String neuesguthaben = String.valueOf(newguthaben);
+
+		try {
+			BufferedReader replaceGuthaben = new BufferedReader(new FileReader(
+					"PlayerFile.txt"));
+			String line;
+			String input = "";
+
+			while ((line = replaceGuthaben.readLine()) != null)
+				input += line + '\n';
+
+			System.out.println(input);
+
+			if (newguthaben != get_guthaben()) {
+				
+				input = input.replace(guthaben, neuesguthaben);
+
+			}
+
+			// check if the new input is right
+			System.out.println("----------------------------------" + '\n'
+					+ input);
+
+			replaceGuthaben.close();
+
+			// überschreibt file
+			FileOutputStream überschreibGuthaben = new FileOutputStream(
+					"PlayerFile.txt");
+			überschreibGuthaben.write(input.getBytes());
+
+			überschreibGuthaben.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
