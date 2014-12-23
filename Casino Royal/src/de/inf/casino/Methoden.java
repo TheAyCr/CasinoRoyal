@@ -65,21 +65,28 @@ public class Methoden {
 		}
 	}
 
-	// Integer scanner und überprüfung auf Integer
+	// Integer scanner und überprüfung auf Integer TODO
 	public static void intsc(String waswillstdu) {
 
 		scannerint = new Scanner(System.in);
 		System.out.print(waswillstdu + ": ");
 
 		if (scannerint.hasNextInt()) {
-			_scint = scannerint.nextInt();
+			int temp = scannerint.nextInt();
+			if (temp > 0) {
+				_scint = temp;
+			} else {
+				System.out.println("Bitte gebe einen positiven Wert z.B. 1 , 80, 7532 ein!");
+				System.out.println("");
+				delay(1000);
+				intsc(waswillstdu);
+			}
 
 		} else {
 			System.out
-					.println("Bitte einen Integer (Ganzzahliger Wert) eingeben!");
+					.println("Bitte gebe einen ganzzahligen Wert z.B. 1 , 80, 7532 ein!");
 			System.out.println("");
 			delay(1000);
-			System.out.print(waswillstdu + ": ");
 			intsc(waswillstdu);
 		}
 
@@ -87,9 +94,19 @@ public class Methoden {
 
 	// String scanner
 	public static void stringsc(String waswillstdu) {
+		
 		scannerstring = new Scanner(System.in);
 		System.out.print(waswillstdu + ": ");
-		_scstring = scannerstring.nextLine();
+		
+		if (scannerstring.hasNext()){
+			_scstring = scannerstring.nextLine();
+		}
+		else{
+			System.out.println("Bitte gebe NUR Buchstaben und Zahlen ein!");
+			System.out.println("");
+			delay(1000);
+			stringsc(waswillstdu);
+		}
 	}
 
 	// delay
@@ -163,10 +180,6 @@ public class Methoden {
 	}
 
 	public static void set_guthaben(int newguthaben) {
-		_guthaben = newguthaben;
-	}
-
-	public static void replace_guthaben(int newguthaben) {
 
 		String guthaben = String.valueOf(get_guthaben());
 		String neuesguthaben = String.valueOf(newguthaben);
@@ -180,26 +193,22 @@ public class Methoden {
 			while ((line = replaceGuthaben.readLine()) != null)
 				input += line + '\n';
 
-			System.out.println(input);
-
 			if (newguthaben != get_guthaben()) {
-				
-				input = input.replace(guthaben, neuesguthaben);
+
+				input = input.replaceAll(guthaben, neuesguthaben);
+
+				// überschreibt file
+				FileOutputStream überschreibGuthaben = new FileOutputStream(
+						"PlayerFile.txt");
+				überschreibGuthaben.write(input.getBytes());
+
+				überschreibGuthaben.close();
 
 			}
 
-			// check if the new input is right
-			System.out.println("----------------------------------" + '\n'
-					+ input);
-
 			replaceGuthaben.close();
-
-			// überschreibt file
-			FileOutputStream überschreibGuthaben = new FileOutputStream(
-					"PlayerFile.txt");
-			überschreibGuthaben.write(input.getBytes());
-
-			überschreibGuthaben.close();
+			
+			_guthaben = newguthaben;
 
 		} catch (IOException e) {
 			e.printStackTrace();

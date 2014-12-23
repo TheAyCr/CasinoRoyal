@@ -20,6 +20,9 @@ public class Spielerprofil extends Methoden {
 		erstelleFile("PlayerFile.txt");
 
 		checkSpieler();
+		
+		checkalter();
+		
 
 	}
 
@@ -45,6 +48,7 @@ public class Spielerprofil extends Methoden {
 
 			} catch (FileNotFoundException e) {
 				System.out.println("FUCK fehler im Spielerpofiel");
+				return;
 
 			}
 
@@ -82,8 +86,8 @@ public class Spielerprofil extends Methoden {
 
 	public static void existSpieler() {
 
-		System.out.println("Du wurdest in der DB gefunden!");
 		System.out.println("");
+		System.out.println("Du wurdest in der DB gefunden!");
 
 		try {
 			read = new Scanner(new File("PlayerFile.txt"));
@@ -91,10 +95,12 @@ public class Spielerprofil extends Methoden {
 
 		}
 
-		while (read.hasNext()) {
+		boolean gefunden = false;
+		while (read.hasNext() && gefunden == false) {
 
 			if (read.next().equalsIgnoreCase(_name)) {
 
+				gefunden = true;
 				String name = _name;
 				set_name(name);
 				read.next();
@@ -106,7 +112,7 @@ public class Spielerprofil extends Methoden {
 				System.out.println("Alter: " + get_alter());
 				System.out.println("Guthaben: " + get_guthaben());
 
-				delay(3500);
+				delay(2000);
 			}
 		}
 

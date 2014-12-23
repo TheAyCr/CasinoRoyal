@@ -5,10 +5,9 @@ public class Eingang extends Spiele {
 	public static void main(String[] args) {
 
 		new Eingang();
-		
 	}
 
-	Eingang() {
+	public Eingang() {
 
 		System.out.print("\n");
 		System.out.println("  ║║ 	                            			       ║║");
@@ -20,15 +19,9 @@ public class Eingang extends Spiele {
 		System.out.println("  ║║ 	                            			       ║║");
 
 		
-		//tests
-		
-		//set_guthaben(9);
-		
 		
 		// erstellt ein Benutzerprofil
 		new Spielerprofil();
-
-		checkalter();
 
 		spielelobby();
 
