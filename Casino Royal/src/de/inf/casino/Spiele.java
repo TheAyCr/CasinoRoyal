@@ -51,7 +51,7 @@ public class Spiele extends Methoden {
 				|| _modus.equalsIgnoreCase("stop")
 				|| _modus.equalsIgnoreCase("ende")) {
 
-			// TODO new Ausgang();
+			new Ausgang();
 		}
 
 		else if (_modus.equalsIgnoreCase("chips")

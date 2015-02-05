@@ -64,7 +64,7 @@ public class Spielerprofil extends Methoden {
 		delay(2000);
 
 		scset_alter();
-		scset_startguthaben();
+		scset_startguthabenAcc();
 
 		try {
 			fw = new FileWriter(SpielerDB, true);
@@ -111,11 +111,12 @@ public class Spielerprofil extends Methoden {
 				System.out.println("Name: " + get_name());
 				System.out.println("Alter: " + get_alter());
 				System.out.println("Guthaben: " + get_guthaben());
+				
+				
+				
 
 				delay(2000);
 			}
 		}
-
 	}
-
 }

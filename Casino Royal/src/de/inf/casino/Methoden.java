@@ -20,7 +20,7 @@ public class Methoden {
 	public static String _name;
 	public static int _alter;
 	public static int _guthaben;
-	public static int _startguthaben;
+	public static int _startguthabenacc;
 
 	// erstelle File
 	public void erstelleFile(String FileName) {
@@ -150,11 +150,11 @@ public class Methoden {
 
 	}
 
-	public static void scset_startguthaben() {
+	public static void scset_startguthabenAcc() {
 		intsc("Dein Startguthaben");
 		int sg = _scint;
 		_guthaben = sg;
-		_startguthaben = sg;
+		_startguthabenacc = sg;
 
 	}
 

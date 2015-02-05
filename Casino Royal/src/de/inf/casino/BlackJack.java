@@ -34,31 +34,35 @@ public class BlackJack extends Spiele {
 		karteziehen(2);
 		System.out.println("");
 		_spielerKartenwert = Kartenwert;
-		
 
 		if (_karten[0] == 0 && _karten[1] == 9) {
 			System.out.println("");
 			System.out.println("Der Wert ist 21 - BLACKJACK");
+			delay(3000);
 			nächsteRunde("Computer");
 
 		} else if (_karten[0] == 0 && _karten[1] == 10) {
 			System.out.println("");
 			System.out.println("Der Wert ist 21 - BLACKJACK");
+			delay(3000);
 			nächsteRunde("Computer");
 
 		} else if (_karten[0] == 0 && _karten[1] == 11) {
 			System.out.println("");
 			System.out.println("Der Wert ist 21 - BLACKJACK");
+			delay(3000);
 			nächsteRunde("Computer");
 
 		} else if (_karten[0] == 0 && _karten[1] == 12) {
 			System.out.println("");
 			System.out.println("Der Wert ist 21 - BLACKJACK");
+			delay(3000);
 			nächsteRunde("Computer");
 
 		} else {
 
 			System.out.println("Das ergibt einen Wert von " + Kartenwert + ".");
+			delay(2000);
 			nächsteRunde("Spieler");
 
 		}
@@ -77,67 +81,67 @@ public class BlackJack extends Spiele {
 			switch (zufallskarte) {
 
 			case (0):
-				Kartenwert = Kartenwert + 1;
+				Kartenwert += 1;
 				System.out.println("Ass");
 				break;
 
 			case (1):
-				Kartenwert = Kartenwert + 2;
+				Kartenwert += 2;
 				System.out.println("Zwei");
 				break;
 
 			case (2):
-				Kartenwert = Kartenwert + 3;
+				Kartenwert += 3;
 				System.out.println("Drei");
 				break;
 
 			case (3):
-				Kartenwert = Kartenwert + 4;
+				Kartenwert += 4;
 				System.out.println("Vier");
 				break;
 
 			case (4):
-				Kartenwert = Kartenwert + 5;
+				Kartenwert += 5;
 				System.out.println("Fünf");
 				break;
 
 			case (5):
-				Kartenwert = Kartenwert + 6;
+				Kartenwert += 6;
 				System.out.println("Sechs");
 				break;
 
 			case (6):
-				Kartenwert = Kartenwert + 7;
+				Kartenwert += 7;
 				System.out.println("Sieben");
 				break;
 
 			case (7):
-				Kartenwert = Kartenwert + 8;
+				Kartenwert += 8;
 				System.out.println("Acht");
 				break;
 
 			case (8):
-				Kartenwert = Kartenwert + 9;
+				Kartenwert += 9;
 				System.out.println("Neun");
 				break;
 
 			case (9):
-				Kartenwert = Kartenwert + 10;
+				Kartenwert += 10;
 				System.out.println("Zehn");
 				break;
 
 			case (10):
-				Kartenwert = Kartenwert + 10;
+				Kartenwert += 10;
 				System.out.println("Bube");
 				break;
 
 			case (11):
-				Kartenwert = Kartenwert + 10;
+				Kartenwert += 10;
 				System.out.println("Dame");
 				break;
 
 			case (12):
-				Kartenwert = Kartenwert + 10;
+				Kartenwert += 10;
 				System.out.println("König");
 				break;
 			}
@@ -170,15 +174,16 @@ public class BlackJack extends Spiele {
 					karteziehen(1);
 					System.out.println("");
 					_spielerKartenwert = Kartenwert;
-					
-					System.out.println("Das ergibt einen Wert von " + Kartenwert + ".");
-					
-					if (Kartenwert >= 21){
-						
+
+					System.out.println("Das ergibt einen Wert von "
+							+ Kartenwert + ".");
+
+					if (Kartenwert >= 21) {
+
 						auswertung();
-						break;
+						return;
 					}
-					
+
 					nächsteRunde("Spieler");
 				}
 
@@ -198,13 +203,13 @@ public class BlackJack extends Spiele {
 		}
 
 		else if (art.equals("Computer")) {
-			
+
 			Kartenwert = 0;
 
 			if (Runde == 1) {
 
 				Runde++;
-				
+
 				clear();
 				System.out.println("ⓒⓞⓤⓟⓘⓔⓡ");
 				System.out.println("");
@@ -215,7 +220,6 @@ public class BlackJack extends Spiele {
 				karteziehen(2);
 				System.out.println("");
 				_computerKartenwert = Kartenwert;
-
 
 				if (_karten[0] == 0 && _karten[1] == 9) {
 					System.out.println("");
@@ -247,7 +251,7 @@ public class BlackJack extends Spiele {
 
 				} else {
 					System.out.println("Der Computer hat einen Kartenwert von "
-							+ Kartenwert + ".");
+							+ _computerKartenwert + ".");
 
 					delay(3000);
 
@@ -258,20 +262,30 @@ public class BlackJack extends Spiele {
 			if (Runde >= 2) {
 
 				Runde++;
-				
+
 				if (_computerKartenwert <= 15) {
 
 					System.out.println("");
 					System.out.println("Der Coupier nimmt noch eine Karte.");
 					karteziehen(1);
-					_computerKartenwert = Kartenwert;
-					
+					_computerKartenwert += Kartenwert;
+
 					System.out.println("");
 					System.out.println("Der Computer hat einen Kartenwert von "
 							+ _computerKartenwert + ".");
 					System.out.println("");
-					delay(3000);
-					nächsteRunde("computer");
+
+					if (_computerKartenwert >= 21) {
+
+						auswertung();
+						return;
+					}
+
+					else {
+
+						delay(3000);
+						nächsteRunde("computer");
+					}
 
 				} else {
 
@@ -291,7 +305,7 @@ public class BlackJack extends Spiele {
 				|| (_computerKartenwert >= 21)) {
 
 			// Spieler gewinnt
-			set_guthaben(_guthaben + _einsatz * 2);
+			set_guthaben(_guthaben + (_einsatz * 2));
 
 			System.out.println("");
 			System.out.println("");
@@ -305,18 +319,23 @@ public class BlackJack extends Spiele {
 						+ _computerKartenwert + ").");
 				System.out.println("Du hast " + _einsatz + " Chips gewonnen!");
 				System.out.println("");
+				delay(2000);
 				System.out.println("Du hast nun " + get_guthaben() + " Chips.");
+				delay(2000);
 				nochmal(classname);
-				
+
 			}
 
 			if (_computerKartenwert >= 21) {
 
 				System.out.println("GEWONNEN!");
-                System.out.println("Der Kartenwert des Coupier (" + _computerKartenwert +") ist höher als 21.");
-                System.out.println("Du hast " + _einsatz + " Chips gewonnen!");
-                System.out.println("");
-                System.out.println("Du hast nun " + get_guthaben() + " Chips.");
+				System.out.println("Der Kartenwert des Coupier ("
+						+ _computerKartenwert + ") ist höher als 21.");
+				System.out.println("Du hast " + _einsatz + " Chips gewonnen!");
+				System.out.println("");
+				delay(2000);
+				System.out.println("Du hast nun " + get_guthaben() + " Chips.");
+				delay(2000);
 			}
 
 		}
@@ -333,40 +352,49 @@ public class BlackJack extends Spiele {
 					&& _spielerKartenwert <= 21) {
 
 				System.out.println("VERLOREN!");
-				System.out.println("Der Kartenwert des Computers(" + _computerKartenwert
+				System.out.println("Der Kartenwert des Computers("
+						+ _computerKartenwert
 						+ ") ist höher als dein Kartenwert("
 						+ _spielerKartenwert + ").");
 				System.out.println("Du hast " + _einsatz + " Chips verloren!");
 				System.out.println("");
+				delay(2000);
 				System.out.println("Du hast nun " + get_guthaben() + " Chips.");
+				delay(2000);
 				nochmal(classname);
-				
+
 			}
 
 			if (_spielerKartenwert >= 21) {
 
 				System.out.println("VERLOREN!");
-				System.out.println("Dein Kartenwert (" + _spielerKartenwert +") ist höher als 21.");
+				System.out.println("Dein Kartenwert (" + _spielerKartenwert
+						+ ") ist höher als 21.");
 				System.out.println("Du hast " + _einsatz + " Chips verloren!");
 				System.out.println("");
+				delay(2000);
 				System.out.println("Du hast nun " + get_guthaben() + " Chips.");
+				delay(2000);
 				nochmal(classname);
 			}
-
-			
 
 		} else {
 
 			// unendschieden
 
 			set_guthaben(get_guthaben() + _einsatz);
-			
+
 			System.out.println("Es ist unentschieden.");
-            System.out.println("Du verlierst nichts.");
-            System.out.println("Dein Kartenwert (" + _spielerKartenwert +") ist gleich mit dem des Computers (" + _computerKartenwert +").");
-            System.out.println("");
-            System.out.println("Du hast immernoch " + get_guthaben() + " Chips.");
-            nochmal(classname);
+			System.out.println("Du verlierst nichts.");
+			System.out.println("Dein Kartenwert (" + _spielerKartenwert
+					+ ") ist gleich mit dem des Computers ("
+					+ _computerKartenwert + ").");
+			delay(2000);
+			System.out.println("");
+			System.out.println("Du hast immernoch " + get_guthaben()
+					+ " Chips.");
+			delay(2000);
+			nochmal(classname);
 		}
 
 	}
